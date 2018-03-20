@@ -20,7 +20,7 @@ class NestedKMeans():
         return (np.linalg.norm(self.c.reshape(-1, self.ndim) - self.x[i])).argmin()
 
     def assignment_with_bounds(self, i):
-        self.d[i] = np.linalg.norm(self.c[self.assign(i)] - self.x[i]).min()
+        self.d[i] = np.linalg.norm(self.c[self.a[i]] - self.x[i]).min()
 
         for j in range(self.k):
             if j != self.a[i]:
