@@ -101,9 +101,11 @@ class NestedKMeans():
                     break
 
             if np.nanmin(sigmaC / (p)) > self.rho:
-                M0=M1
+                M0 = M1
                 M1=min(2 * M1, self.N)
                 print("t: ", t, "M1: ", M1)
+            else:
+                M0 = M1
 
             t += 1
 
