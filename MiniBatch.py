@@ -23,7 +23,7 @@ class MiniBatchKMeans():
 
     def a(self, i):
         # argmin of euclidean distance
-        # print(np.linalg.norm(self.c.reshape(-1, self.ndim) - self.x[i], axis=0))
+
         return (np.linalg.norm(self.c.reshape(-1, self.ndim) - self.x[i], axis=1)).argmin()
 
 
@@ -43,19 +43,19 @@ class MiniBatchKMeans():
             M = np.random.choice(self.N, self.b)
             for i in M:
                 self.accumulate(self.a(i))
-            # for j in range(self.k):
+
             self.c = self.S / self.v.reshape(-1, 1)
 
             if (temp - self.c == 0).all():
                 self.convCritirion = True
             iter += 1
-            # print("Iter: ", iter, end="\r")
+
 
     def show(self, keep = False):
         C = [self.a(i) for i in range(self.N)]
         plt.cla()
         plt.scatter(self.x[:,0], self.x[:,1], c=C)
-        plt.plot(self.c[:,0],self.c[:,1],'*m',markersize=20)
+        plt.plot(self.c[:,0],self.c[:,1],'x', color="black",markersize=10)
         plt.draw()
         if keep :
             plt.ioff()
